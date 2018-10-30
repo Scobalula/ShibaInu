@@ -217,7 +217,7 @@ namespace ShibaInu
         private void UIWeaponListFileDrop(object sender, DragEventArgs e)
         {
             // Get dropped files
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
 
             // Check did we actually get files
             if (files != null)
@@ -460,7 +460,7 @@ namespace ShibaInu
         private GameDataTable.Asset ConvertWeapon(Weapon weapon)
         {
             // Get template GDT and Asset
-            var templateFile = UITemplateList.SelectedItem as GameDataTable;
+            var templateFile = weapon.Template;
             var templateAsset = templateFile.Assets["template"];
 
             // Clone it
